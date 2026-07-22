@@ -1,16 +1,45 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Phone, Zap, Wifi, Tv, Car, Building, Receipt, Search } from 'lucide-react';
+import { CheckCircle, Phone, Zap, Wifi, Tv, Car, Shield, Droplets, Home, Landmark, Building, Receipt, Search, CreditCard } from 'lucide-react';
+import { Provider } from '@radix-ui/react-tooltip';
 
 const billCategories = [
-  { name: 'Airtime', icon: Phone, color: '#0A5CFF', providers: ['Verizon', 'AT&T', 'T-Mobile', 'US Cellular'] },
-  { name: 'Data', icon: Wifi, color: '#00C853', providers: ['Verizon', 'AT&T', 'T-Mobile', 'US Cellular'] },
+  {
+  name: 'Credit Card',
+  icon: CreditCard,
+  color: '#0A5CFF',
+  providers: ['Visa', 'Mastercard', 'American Express', 'Discover']
+},
+{
+  name: 'Insurance',
+  icon: Shield,
+  color: '#0A5CFF',
+  providers: ['State Farm', 'GEICO', 'Progressive', 'Allstate']
+},
+{
+  name: 'Water',
+  icon: Droplets,
+  color: '#0A5CFF',
+  providers: ['City Water', 'County Water', 'Municipal Water', 'Water District']
+},
+{
+  name: 'Mortgage',
+  icon: Home,
+  color: '#0A5CFF',
+  providers: ['Chase', 'Bank of America', 'Wells Fargo', 'Rocket Mortgage']
+},
+{
+  name: 'Property Tax',
+  icon: Landmark,
+  color: '#0A5CFF',
+  providers: ['County Tax Office', 'City Tax Office', 'State Revenue', 'IRS']
+},
   { name: 'Electricity', icon: Zap, color: '#FFB300', providers: ['ConEd', 'PG&E', 'Duke Energy', 'Southern Co', 'Exelon'] },
-  { name: 'Cable TV', icon: Tv, color: '#F64C9C', providers: ['Comcast', 'Spectrum', 'DirecTV'] },
+  { name: 'Streaming & TV', icon: Tv, color: '#F64C9C', providers: ['Comcast', 'Spectrum', 'DirecTV'] },
   { name: 'Internet', icon: Wifi, color: '#7C3AED', providers: ['Comcast', 'Verizon Fios', 'AT&T Fiber', 'Cox'] },
-  { name: 'Toll Payment', icon: Car, color: '#E53935', providers: ['E-ZPass', 'FasTrak'] },
-  { name: 'Government Levies', icon: Building, color: '#64748b', providers: ['IRS', 'State Tax', 'Local Tax'] },
+  { name: 'Tolls', icon: Car, color: '#E53935', providers: ['E-ZPass', 'FasTrak'] },
+  { name: 'Government Payments', icon: Building, color: '#64748b', providers: ['IRS', 'State Tax', 'Local Tax'] },
 ];
 
 export default function BillsPage() {
