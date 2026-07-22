@@ -20,10 +20,39 @@ export default function LoanApplicationPage() {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     // Personal
-    fullName: '', dob: '', address: '', maritalStatus: '',
+firstName: '',
+middleName: '',
+lastName: '',
+dob: '',
+ssn: '',
+driversLicense: '',
+licenseState: '',
+licenseExpiry: '',
+email: '',
+phone: '',
+address: '',
+apartment: '',
+city: '',
+state: '',
+zipCode: '',
+citizenship: '',
+maritalStatus: '',
+dependents: 0,
     // Employment
-    employer: '', jobTitle: '', income: '', employmentType: '',
-    existingLoans: 'No',
+employmentType: '',
+employer: '',
+employerAddress: '',
+occupation: '',
+jobTitle: '',
+yearsEmployed: '',
+monthlyIncome: '',
+otherIncome: '',
+incomeSource: '',
+housingStatus: '',
+housingPayment: '',
+workPhone: '',
+workEmail: '',
+existingLoans: 'No',
     // Loan
     loanType: 'Personal Loan', amount: 200000, tenure: 12,
     purpose: '',
@@ -82,8 +111,38 @@ export default function LoanApplicationPage() {
                 <h2 className="font-bold text-[#0F172A] flex items-center gap-2"><User className="w-5 h-5 text-[#0A5CFF]" /> Personal Information</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
-                    <input className="input-field" placeholder="John Michael Smith" value={form.fullName} onChange={(e) => update('fullName', e.target.value)} />
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+  First Name
+</label>
+
+<input
+  className="input-field"
+  placeholder="John"
+  value={form.firstName}
+  onChange={(e) => update('firstName', e.target.value)}
+/>
+
+<label className="block text-sm font-semibold text-slate-700 mb-2 mt-4">
+  Middle Name
+</label>
+
+<input
+  className="input-field"
+  placeholder="Michael"
+  value={form.middleName}
+  onChange={(e) => update('middleName', e.target.value)}
+/>
+
+<label className="block text-sm font-semibold text-slate-700 mb-2 mt-4">
+  Last Name
+</label>
+
+<input
+  className="input-field"
+  placeholder="Smith"
+  value={form.lastName}
+  onChange={(e) => update('lastName', e.target.value)}
+/>
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Date of Birth</label>
@@ -126,7 +185,7 @@ export default function LoanApplicationPage() {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Monthly Net Income ($)</label>
-                    <input type="number" className="input-field" placeholder="500000" value={form.income} onChange={(e) => update('income', e.target.value)} />
+                    <input type="number" className="input-field" placeholder="500000" value={form.monthlyIncome} onChange={(e) => update('monthlyIncome', e.target.value)} />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Do you have existing loans?</label>
@@ -227,9 +286,17 @@ export default function LoanApplicationPage() {
                 <h2 className="font-bold text-[#0F172A] flex items-center gap-2"><FileText className="w-5 h-5 text-[#0A5CFF]" /> Review Application</h2>
                 <div className="space-y-3">
                   {[
-                    { label: 'Full Name', value: form.fullName || '—' },
+                    {
+  label: 'Full Name',
+  value: `${form.firstName} ${form.middleName} ${form.lastName}`.trim() || '—'
+},
                     { label: 'Employment', value: form.employmentType || '—' },
-                    { label: 'Monthly Income', value: form.income ? fmtAmt(Number(form.income)) : '—' },
+                    {
+  label: 'Monthly Income',
+  value: form.monthlyIncome
+    ? fmtAmt(Number(form.monthlyIncome))
+    : '—'
+},
                     { label: 'Loan Type', value: form.loanType },
                     { label: 'Loan Amount', value: fmtAmt(form.amount) },
                     { label: 'Tenure', value: `${form.tenure} months` },
